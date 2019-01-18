@@ -1,9 +1,10 @@
 print("start +++")
 counter = 0
 
-while(counter<10000)
+while(counter<1000)
 do
-    counter = counter + 1 print("counter: ", counter)
+    counter = counter + 1 
+    print("counter: ", counter)
 end
 
 print("stop ---")

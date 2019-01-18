@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
     lua_State *L = luaL_newstate();
     luaL_openlibs(L);
 
-    // blocks until program ends
+    // blocks until lua code finished
     int err = luaL_loadfile(L, "../test.lua") || lua_pcall(L, 0, 0, 0);
 
     if(err){
