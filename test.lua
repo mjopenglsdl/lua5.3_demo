@@ -8,3 +8,6 @@ do
 end
 
 print("stop ---")
+
+-- custum c func
+my_printMsg()

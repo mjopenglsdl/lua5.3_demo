@@ -9,11 +9,25 @@
 
 using namespace std;
 
+
+static int printMsg(lua_State *L)
+{
+    cout<<"CALL C FUNC: "<<__FUNCTION__<<endl;
+    return 0;
+}
+
+
 int main(int argc, char const *argv[])
 {
+    /// 1. init
     lua_State *L = luaL_newstate();
     luaL_openlibs(L);
 
+    // reg func
+    lua_pushcfunction(L, printMsg);
+    lua_setglobal(L, "my_printMsg");
+
+    /// 2. load file
     int stack_size = lua_gettop(L);
     cout<<"stack size BEFORE: "<<stack_size<<endl;
 
@@ -29,6 +43,7 @@ int main(int argc, char const *argv[])
         cout<<" current type in stack: "<<type<<endl;   // 6 == LUA_TFUNCTION
     }
 
+    /// 3. call lua func in stack
     err = err || lua_pcall(L, 0, 0, 0);
 
     cout<<"stack size FINAL: "<<stack_size<<endl;
