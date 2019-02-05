@@ -1,5 +1,8 @@
-
-#include <lua5.3/lua.hpp>
+#ifdef MINGW
+    #include <lua.hpp>
+#elif defined(UBUNTU1604)
+    #include <lua5.3/lua.hpp>
+#endif
 
 #include <iostream>
 #include <string>
